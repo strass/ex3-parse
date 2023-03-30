@@ -38,9 +38,7 @@ var grammar = {
     {"name": "keywords", "symbols": ["keywords$string$3"], "postprocess": function(d) {return d[0].join("") }},
     {"name": "duration$ebnf$1", "symbols": []},
     {"name": "duration$ebnf$1", "symbols": ["duration$ebnf$1", /./], "postprocess": function arrpush(d) {return d[0].concat([d[1]]);}},
-    {"name": "duration", "symbols": ["duration$ebnf$1"], "postprocess":  function(d) {
-        console.log(d);
-        return d[0].join("") } },
+    {"name": "duration", "symbols": ["duration$ebnf$1"], "postprocess": function(d) {return d[0].join("") }},
     {"name": "requirement", "symbols": ["requirementType", "__", "number"], "postprocess": function(d) { return d[0][0] + " " + d[2];}},
     {"name": "requirementType$string$1", "symbols": [{"literal":"A"}, {"literal":"r"}, {"literal":"c"}, {"literal":"h"}, {"literal":"e"}, {"literal":"r"}, {"literal":"y"}], "postprocess": function joiner(d) {return d.join('');}},
     {"name": "requirementType", "symbols": ["requirementType$string$1"]},
