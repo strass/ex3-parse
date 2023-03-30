@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "generate": "nearleyc src/charm.ne -o src/_charm.ne.js",
+    "pretest": "npm run generate",
     "test": "jest"
   },
   "author": "",
