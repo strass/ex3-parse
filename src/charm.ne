@@ -3,20 +3,20 @@ program -> charmName newline charmDetails newline description
 charmName -> .:+ {% function(d) {return d[0].join("") } %}
 
 charmDetails -> cost mins newline
-  _ "Type:" _ charmType _ newline
-  _ "Keywords:" _ keywords newline
-  _ "Duration:" _ duration newline
-  _ "Prerequisite Charms: None"
+  charmType  newline
+  keywords newline
+  "Duration: " duration newline
+  "Prerequisite Charms: None"
 
 description -> .:+ {% function(d) {return d[0].join("") } %}
 cost -> "Cost: " moteCost "; "  {% function(d) { return d[0] + d[1];} %}
 moteCost -> number "m" {% function(d) { return d[0][0] + d[1];} %}
 mins -> "Mins: " requirement ", ":? mins:? 
-charmType -> "Reflexive" | "Simple"
-keywords -> "None"  | "Dual"
-duration -> word:+
+charmType -> "Type: " "Reflexive" | "Simple" {% function(d) {return d[0].join("") } %}
+keywords ->  "Keywords: " "None"  | "Dual" {% function(d) {return d[0].join("") } %}
+duration -> .:*  {% function(d) {return d[0].join("") } %}
 
-requirement -> requirementType __ number
+requirement -> requirementType __ number {% function(d) { return d[0][0] + " " + d[2];} %}
 requirementType -> "Archery" | "Athletics" | "Essence"
 [a-zA-Z] _
 word -> [a-zA-Z]:+ " ":*
