@@ -4,8 +4,17 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "generate": "nearleyc src/charm.ne -o src/_charm.ne.js",
+    "test": "ts-node src/index.ts"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "nearley": "^2.20.1",
+    "typescript": "^5.0.2"
+  },
+  "devDependencies": {
+    "@types/nearley": "^2.11.2",
+    "ts-node": "^10.9.1"
+  }
 }
