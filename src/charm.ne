@@ -1,4 +1,6 @@
-program -> charmName newline charmDetails newline description {% function(d) { return d.flat().filter(Boolean) }%}
+program -> charmName newline charmDetails newline description {% 
+  function(d) { return d.flat().filter(Boolean) }
+%}
 
 charmName -> singleLineText {% id %}
 
